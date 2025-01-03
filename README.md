@@ -1,6 +1,6 @@
-# 🧠 Vision DL Architectures Review 🖼️
+# 🧠 Vision DL Architectures 🖼️
 
-Welcome! 🚀 This repo is part of my journey to dive deep into **Deep Learning (DL)** for computer vision. It’s a personal project to document my learning and implementations of famous DL architectures from scratch. I’ll update it as I progress.
+Welcome! 🚀 This repo is part of my journey to dive deep into **Deep Learning (DL)** for computer vision. It’s a personal project to document my learning journey to implement DL architectures from scratch. I’ll update it as I progress.
 
 ---
 
