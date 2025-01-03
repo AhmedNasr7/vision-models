@@ -9,7 +9,7 @@ class VGG(nn.Module):
     def __init__(self, num_classes):
         super(VGG, self).__init__()
 
-        self.features = nn.Sequential(
+        self.backbone = nn.Sequential(
             # Block 1
             nn.Conv2d(3, 64, kernel_size=3, padding=1),
             nn.ReLU(inplace=True),
@@ -65,7 +65,7 @@ class VGG(nn.Module):
         )
 
     def forward(self, x):
-        x = self.features(x)
+        x = self.backbone(x)
         x = self.avgpool(x)
         x = torch.flatten(x, 1)  # Flatten the feature maps
         x = self.classifier(x)
