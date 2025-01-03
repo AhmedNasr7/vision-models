@@ -16,6 +16,3 @@ def param_count(model):
     return sum(p.numel() for p in model.parameters() if p.requires_grad)
 
 
-def accuracy(outputs, labels):
-  _, preds = torch.max(outputs, dim=1)
-  return torch.tensor(torch.sum(preds == labels).item() / len(preds))

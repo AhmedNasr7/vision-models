@@ -3,11 +3,14 @@ from loguru import logger
 import torch
 from tqdm import tqdm
 import matplotlib.pyplot as plt
-from utils.model_utils import accuracy
+from utils.model_utils import init_weights
+from metrics import accuracy
+from typing import Callable
+
 
 
 class Trainer:
-    def __init__(self, model, criterion, optimizer, train_loader, val_loader, save_path, device="cuda", save_period=5):
+    def __init__(self, model, criterion, optimizer, train_loader, val_loader, save_path, device="cuda", save_period=5, init_weights_fn=init_weights):
         self.model = model
         self.criterion = criterion
         self.optimizer = optimizer
@@ -18,6 +21,11 @@ class Trainer:
             
         self.save_path = save_path
         self.save_period = save_period
+
+        if isinstance(init_weights_fn, Callable):
+            self.model.apply(init_weights_fn)
+        else:
+            raise ValueError("init_weights_fn should be a function!")
 
         if device == "cuda" and torch.cuda.is_available():
             self.device = torch.device(device)
